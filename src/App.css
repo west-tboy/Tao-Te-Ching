@@ -10,6 +10,8 @@
 .main-content {
   flex: 1;
   margin-left: 60px;
+  padding: 32px;
+  max-width: 800px;
   min-height: calc(100vh - 60px);
   transition: margin-left 0.3s ease;
 }
@@ -135,8 +137,3 @@
 }
 
 /* Main content styles */
-.main-content {
-  padding: 32px;
-  max-width: 800px;
-  margin: 0 auto;
-}
