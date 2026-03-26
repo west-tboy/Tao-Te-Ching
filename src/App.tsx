@@ -8,6 +8,7 @@ import './App.css';
 function App() {
   const [currentChapter, setCurrentChapter] = useState(1);
   const [showHome, setShowHome] = useState(true);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   const handlePrev = useCallback(() => {
     setCurrentChapter(prev => Math.max(1, prev - 1));
@@ -23,6 +24,10 @@ function App() {
 
   const handleEnter = useCallback(() => {
     setShowHome(false);
+  }, []);
+
+  const handleToggleSidebar = useCallback(() => {
+    setSidebarCollapsed(prev => !prev);
   }, []);
 
   // Keyboard navigation
@@ -83,9 +88,11 @@ function App() {
           chapters={chapters}
           currentChapter={currentChapter}
           onSelectChapter={handleSelectChapter}
+          isCollapsed={sidebarCollapsed}
+          onToggle={handleToggleSidebar}
         />
 
-        <main className="main-content">
+        <main className={`main-content ${sidebarCollapsed ? 'expanded' : ''}`}>
           {chapter && <ChapterContent chapter={chapter} />}
         </main>
       </div>

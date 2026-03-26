@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Chapter } from '../types';
 import './Sidebar.css';
 
@@ -6,16 +5,16 @@ interface SidebarProps {
   chapters: Chapter[];
   currentChapter: number;
   onSelectChapter: (id: number) => void;
+  isCollapsed: boolean;
+  onToggle: () => void;
 }
 
-export function Sidebar({ chapters, currentChapter, onSelectChapter }: SidebarProps) {
-  const [isCollapsed, setIsCollapsed] = useState(false);
-
+export function Sidebar({ chapters, currentChapter, onSelectChapter, isCollapsed, onToggle }: SidebarProps) {
   return (
     <aside className={`sidebar ${isCollapsed ? 'collapsed' : ''}`}>
       <button
         className="sidebar-toggle"
-        onClick={() => setIsCollapsed(!isCollapsed)}
+        onClick={onToggle}
       >
         {isCollapsed ? '→' : '←'}
       </button>

@@ -14,6 +14,10 @@
   transition: margin-left 0.3s ease;
 }
 
+.main-content.expanded {
+  margin-left: 60px;
+}
+
 /* Home Page */
 .home-page {
   min-height: 100vh;
