@@ -7,26 +7,33 @@ import './App.css';
 
 function App() {
   const [currentChapter, setCurrentChapter] = useState(1);
-  const [showHero, setShowHero] = useState(true);
+  const [showHome, setShowHome] = useState(true);
 
   const handlePrev = useCallback(() => {
     setCurrentChapter(prev => Math.max(1, prev - 1));
-    setShowHero(false);
   }, []);
 
   const handleNext = useCallback(() => {
     setCurrentChapter(prev => Math.min(chapters.length, prev + 1));
-    setShowHero(false);
   }, []);
 
   const handleSelectChapter = useCallback((id: number) => {
     setCurrentChapter(id);
-    setShowHero(false);
+  }, []);
+
+  const handleEnter = useCallback(() => {
+    setShowHome(false);
   }, []);
 
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      if (showHome) {
+        if (e.key === 'Enter') {
+          handleEnter();
+        }
+        return;
+      }
       if (e.key === 'ArrowLeft') {
         handlePrev();
       } else if (e.key === 'ArrowRight') {
@@ -36,26 +43,34 @@ function App() {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [handlePrev, handleNext]);
+  }, [showHome, handlePrev, handleNext, handleEnter]);
 
   const chapter = chapters.find(c => c.id === currentChapter);
 
+  // Home Page
+  if (showHome) {
+    return (
+      <div className="home-page">
+        <div className="home-content">
+          <h1 className="home-title">道德经</h1>
+          <p className="home-subtitle">老子</p>
+          <div className="home-purpose">
+            <p>我们的目的是让读者实现作为人的更好的发展，</p>
+            <p>为个人、家庭、社会、国家能够做一些美好的事，</p>
+            <p className="home-purpose-strong">切忌为了个人一已私利滥用。</p>
+          </div>
+          <button className="home-enter-btn" onClick={handleEnter}>
+            开始阅读
+          </button>
+          <p className="home-hint">按 Enter 键或点击按钮进入</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Main Content Page
   return (
     <div className="app">
-      {/* Hero Banner - Purpose Statement */}
-      {showHero && (
-        <div className="hero-banner">
-          <div className="hero-content">
-            <h1 className="hero-title">道德经</h1>
-            <p className="hero-purpose">
-              我们的目的是让读者实现作为人的更好的发展，<br />
-              为个人、家庭、社会、国家能够做一些美好的事，<br />
-              <strong>切忌为了个人一已私利滥用。</strong>
-            </p>
-          </div>
-        </div>
-      )}
-
       <Header
         currentChapter={currentChapter}
         totalChapters={chapters.length}
@@ -70,7 +85,7 @@ function App() {
           onSelectChapter={handleSelectChapter}
         />
 
-        <main className={`main-content ${showHero ? 'with-hero' : ''}`}>
+        <main className="main-content">
           {chapter && <ChapterContent chapter={chapter} />}
         </main>
       </div>
