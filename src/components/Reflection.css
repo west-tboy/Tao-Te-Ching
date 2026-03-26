@@ -1,0 +1,64 @@
+.reflection {
+  margin-top: 24px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.reflection-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.reflection-toggle:hover {
+  background: var(--sidebar-bg);
+}
+
+.reflection-icon {
+  font-size: 18px;
+}
+
+.reflection-arrow {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.reflection-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.reflection-content.open {
+  max-height: 500px;
+}
+
+.reflection-question,
+.reflection-answer {
+  padding: 16px 20px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.reflection-question {
+  background: var(--card-bg);
+  border-bottom: 1px dashed var(--border);
+}
+
+.reflection-answer {
+  background: var(--bg-secondary);
+}
+
+.reflection-content strong {
+  color: var(--accent);
+}

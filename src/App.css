@@ -1,0 +1,62 @@
+.app {
+  min-height: 100vh;
+}
+
+.app-body {
+  display: flex;
+  padding-top: 60px;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 280px;
+  min-height: calc(100vh - 60px);
+  transition: margin-left 0.3s ease, margin-top 0.3s ease;
+}
+
+.main-content.with-hero {
+  margin-top: 280px;
+}
+
+/* Hero Banner */
+.hero-banner {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, #F5F2EB 0%, #E8E4DC 100%);
+  padding: 60px 32px;
+  text-align: center;
+  z-index: 40;
+  border-bottom: 3px solid var(--accent);
+  transition: margin-top 0.3s ease;
+}
+
+[data-theme="dark"] .hero-banner {
+  background: linear-gradient(135deg, #242424 0%, #1A1A1A 100%);
+}
+
+.hero-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 24px;
+  letter-spacing: 8px;
+}
+
+.hero-purpose {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--text-primary);
+}
+
+.hero-purpose strong {
+  color: var(--accent);
+  font-size: 20px;
+}
