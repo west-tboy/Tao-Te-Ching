@@ -1,6 +1,4 @@
 .chapter-content {
-  max-width: 800px;
-  margin: 0 auto;
   padding: 32px;
 }
 
@@ -24,30 +22,63 @@
   line-height: 1.6;
 }
 
-.section-block {
+/* 左右两栏布局 */
+.chapter-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 40px;
+}
+
+.chapter-original-section,
+.chapter-translation-section {
   background: var(--card-bg);
   border-radius: 12px;
   padding: 24px;
-  margin-bottom: 32px;
   border: 1px solid var(--border);
-  transition: all 0.3s ease;
 }
 
-.section-original {
-  font-family: 'Noto Serif SC', serif;
+.section-type-title {
   font-size: 20px;
-  line-height: 1.8;
+  font-weight: 600;
+  color: var(--accent);
+  font-family: 'Noto Serif SC', serif;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--accent);
+}
+
+.original-content {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 18px;
+  line-height: 2;
   color: var(--text-primary);
+}
+
+.original-line {
   margin-bottom: 16px;
-  padding-bottom: 16px;
+  text-indent: 2em;
+}
+
+.translation-content {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+.translation-block {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
   border-bottom: 1px dashed var(--border);
 }
 
-.section-translation {
-  font-size: 16px;
-  color: var(--text-secondary);
-  margin-bottom: 16px;
-  line-height: 1.8;
+.translation-block:last-child {
+  border-bottom: none;
+}
+
+.translation-line {
+  text-indent: 2em;
+  margin-bottom: 12px;
 }
 
 .section-notes {
@@ -56,7 +87,7 @@
   background: var(--bg-primary);
   padding: 12px 16px;
   border-radius: 8px;
-  margin-bottom: 20px;
+  margin-top: 8px;
 }
 
 .section-label {
@@ -64,22 +95,38 @@
   font-weight: 500;
 }
 
-.section-example {
+/* 现代生活中的例子 */
+.chapter-examples {
   background: linear-gradient(135deg, var(--bg-primary) 0%, var(--card-bg) 100%);
-  padding: 20px;
-  border-radius: 10px;
-  margin-top: 20px;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 40px;
   border-left: 4px solid var(--accent);
 }
 
-.section-example h3 {
-  font-size: 16px;
-  color: var(--accent);
-  margin-bottom: 12px;
+.example-block {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px dashed var(--border);
 }
 
-.section-example p {
+.example-block:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.example-block p {
   font-size: 15px;
   color: var(--text-secondary);
   line-height: 1.7;
+  text-indent: 2em;
+}
+
+/* 反思与问答 */
+.chapter-reflections {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid var(--border);
 }
