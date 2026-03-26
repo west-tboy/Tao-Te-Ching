@@ -9,15 +9,16 @@
 
 .main-content {
   flex: 1;
-  margin-left: 60px;
+  margin-left: 280px;
   padding: 32px;
-  max-width: 800px;
+  max-width: calc(100% - 320px);
   min-height: calc(100vh - 60px);
   transition: margin-left 0.3s ease;
 }
 
 .main-content.expanded {
-  margin-left: 320px;
+  margin-left: 60px;
+  max-width: calc(100% - 100px);
 }
 
 /* Home Page */
